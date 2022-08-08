@@ -7,7 +7,7 @@
 
 [[edge_functions]]
   function = "transform-hello-html"
-  path = "/*"
+  path = "/hello-html"
 
 
 
