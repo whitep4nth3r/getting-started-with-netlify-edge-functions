@@ -14,13 +14,13 @@ We'll write an Edge Function to serve the text `Hello, World from the edge!`
 
 We'll set up the project to serve static HTML template files from the /public directory.
 
-[/hello-html](https://getting-started-with-netlify-edge-functions.netlify.app/hello-html)
+[/hello-template](https://getting-started-with-netlify-edge-functions.netlify.app/hello-template)
 
 ## 3. Add location data to the HTML template
 
 We'll write an Edge Function to intercept a static HTML template and update it using geolocation data at the edge.
 
-[/hello-html?method=transform](https://getting-started-with-netlify-edge-functions.netlify.app/hello-html?method=transform)
+[/hello-template?method=transform](https://getting-started-with-netlify-edge-functions.netlify.app/hello-template?method=transform)
 
 ## Watch the video
 
