@@ -6,8 +6,8 @@
   function = "hello"
 
 [[edge_functions]]
-  function = "transform-hello-template"
   path = "/hello-template"
+  function = "transform-hello-template"
 
 
 
