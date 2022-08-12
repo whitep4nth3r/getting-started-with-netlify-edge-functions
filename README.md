@@ -33,3 +33,9 @@ We'll write an Edge Function to intercept a static HTML template and update it u
 ## Watch the video tutorial
 
 [![Getting started with Netlify Edge Functions video thumbnail](video_thumbnail.png)](https://www.youtube.com/watch?v=6pEVhH37xQE)
+
+## Read the supporting blog post
+
+[![Add personalization to static HTML with Netlify Edge Functions](blog_post_og.png)](https://ntl.fyi/personalize-html-with-edge-functions)
+
+
