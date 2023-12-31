@@ -1,51 +1,215 @@
+// index.html
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Getting started with Netlify Edge Functions</title>
-
-    <style>
-      * {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
-          "Open Sans", "Helvetica Neue", sans-serif;
-      }
-
-      body {
-        max-width: 600px;
-        margin: auto;
-        line-height: 1.3;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Getting started with Netlify Edge Functions</h1>
-    <p>Hello and welcome to the tutorial!</p>
-    <p>This tutorial will take you through using Edge Functions on Netlify to build the following URLs:</p>
-
-    <div>
-      <h2>1. Hello, world</h2>
-      <p>
-        We'll write an Edge Function to serve the text
-        <code>Hello, World from the edge!</code>
-      </p>
-      <a href="/hello">/hello</a>
-    </div>
-
-    <div>
-      <h2>2. Serve an HTML template</h2>
-      <p>We'll set up the project to serve static HTML template files from the /public directory.</p>
-      <a href="/hello-html">/hello-html</a>
-    </div>
-
-    <div>
-      <h2>3. Add location data to the HTML template</h2>
-      <p>
-        We'll write an Edge Function to intercept a static HTML template and update it using geolocation data at the
-        edge.
-      </p>
-      <a href="/hello-html?method=transform">/hello-html?method=transform</a>
-    </div>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Macaron Shop</title>
+  <link rel="stylesheet" href="%PUBLIC_URL%/index.css">
+</head>
+<body>
+  <div id="root"></div>
+</body>
 </html>
+
+// App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './components/Home';
+import Shop from './components/Shop';
+import About from './components/About';
+import Contact from './components/Contact';
+import ShoppingCart from './components/ShoppingCart';
+import Navbar from './components/Navbar';
+import './index.css';
+
+function App() {
+  return (
+    <Router>
+      <Navbar />
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/shop" component={Shop} />
+        <Route path="/about" component={About} />
+        <Route path="/contact" component={Contact} />
+        <Route path="/cart" component={ShoppingCart} />
+      </Switch>
+    </Router>
+  );
+}
+
+export default App;
+
+// index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+// index.css
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #ffecef;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/* Add more styling and cool effects here */
+
+// components/Navbar.js
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Navbar.css';
+
+function Navbar() {
+  return (
+    <nav className="navbar">
+      <div className="navbar-container">
+        <Link to="/" className="navbar-logo">
+          Macaron Shop
+        </Link>
+        <ul className="nav-menu">
+          <li className="nav-item">
+            <Link to="/shop" className="nav-links">Shop</Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/about" className="nav-links">About</Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/contact" className="nav-links">Contact</Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/cart" className="nav-links">Cart</Link>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  );
+}
+
+export default Navbar;
+
+// components/Home.js
+import React from 'react';
+import './Home.css';
+
+function Home() {
+  return (
+    <div className="home">
+      <h1>Welcome to the Macaron Shop</h1>
+      <p>Discover our delicious macarons and order your favorites!</p>
+    </div>
+  );
+}
+
+export default Home;
+
+// components/Shop.js
+import React from 'react';
+import Product from './Product';
+import './Shop.css';
+
+function Shop() {
+  // Placeholder data
+  const products = [
+    { id: 1, name: 'Classic Macaron', price: 2.5, image: 'placeholder-image-url' },
+    // Add more products here
+  ];
+
+  return (
+    <div className="shop">
+      <h1>Our Macarons</h1>
+      <div className="products-container">
+        {products.map(product => (
+          <Product key={product.id} product={product} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default Shop;
+
+// components/About.js
+import React from 'react';
+import './About.css';
+
+function About() {
+  return (
+    <div className="about">
+      <h1>About Us</h1>
+      <p>We are passionate about making the finest quality macarons.</p>
+    </div>
+  );
+}
+
+export default About;
+
+// components/Contact.js
+import React from 'react';
+import './Contact.css';
+
+function Contact() {
+  return (
+    <div className="contact">
+      <h1>Contact Us</h1>
+      <p>If you have any questions, please feel free to reach out to us.</p>
+    </div>
+  );
+}
+
+export default Contact;
+
+// components/ShoppingCart.js
+import React from 'react';
+import './ShoppingCart.css';
+
+function ShoppingCart() {
+  // Placeholder for cart items
+  const cartItems = [
+    // Add cart items here
+  ];
+
+  return (
+    <div className="shopping-cart">
+      <h1>Your Cart</h1>
+      <div className="cart-items">
+        {/* Map through cart items and display them */}
+      </div>
+      <div className="cart-total">
+        Total: {/* Calculate total */}
+      </div>
+      <button className="checkout-button">Checkout</button>
+    </div>
+  );
+}
+
+export default ShoppingCart;
+
+// components/Product.js
+import React from 'react';
+import './Product.css';
+
+function Product({ product }) {
+  return (
+    <div className="product">
+      <img src={product.image} alt={product.name} className="product-image" />
+      <h3>{product.name}</h3>
+      <p>${product.price}</p>
+      <button>Add to Cart</button>
+    </div>
+  );
+}
+
+export default Product;
